@@ -1,0 +1,334 @@
+import java.nio.charset.StandardCharsets;
+import java.util.Scanner;
+
+public class laba1 {
+    public static void main(String[] args) {
+        try {
+            System.setOut(new java.io.PrintStream(System.out, true, "UTF-8"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        Metods Metods = new Metods();
+        check checks = new check();
+
+        Scanner scanner = new Scanner(System.in, StandardCharsets.UTF_8);
+        System.out.print("\nВсе задания пронумерованы от 1 до 20 в соотвествии с расположением в файле. \nВведите номер задания, которое вас интересует: ");
+        String choice_str = scanner.next();
+        int choice = checks.CheckInt(choice_str);
+        scanner.nextLine();
+
+        switch(choice) {
+            case 1 -> {
+                System.out.print("Введите число (используйте точку в вещественных числах): ");
+                String x_str = scanner.next();
+                double x = checks.CheckDouble (x_str);
+                x = Metods.franction(x);
+                System.out.print("Дробная часть числа: " + x);
+            }
+            case 2 -> {
+                System.out.print ("При некорректном вводе, программа найдёт первую цифру и продолжит для неё. Если таковой нет, вернётся ошибка.\n");
+                System.out.print ("Введите цифру: ");
+                String x1 = scanner.next();
+                char x = 'a';
+
+                for (int i = 0; i < x1.length();i++) {
+                    if (Character.isDigit(x1.charAt(i))) {
+                        x = x1.charAt(i);
+                        break;
+                    }
+                }
+
+                int x_int;
+                if (x == 'a') {
+                    System.out.print("Строка не имеет чисел!");
+                    break;
+                } else {
+                    x_int = Metods.charToNum(x);
+                }
+                System.out.print("Целая цифра: " + x_int);
+            }
+            case 3 -> {
+                System.out.print("Введите число: ");
+                String x_str = scanner.next();
+                int x = checks.CheckInt (x_str);
+                System.out.print("Результат проверки на двузначность: " + Metods.is2Digits(x));
+            }
+            case 4 -> {
+                System.out.print("Введите число a: ");
+                String a_str = scanner.next();
+                int a = checks.CheckInt (a_str);
+                scanner.nextLine();
+
+                System.out.print("Введите число b: ");
+                String b_str = scanner.next();
+                int b = checks.CheckInt (b_str);
+                scanner.nextLine();
+
+                System.out.print("Введите число num: ");
+                String num_str = scanner.next();
+                int num = checks.CheckInt (num_str);
+                scanner.nextLine();
+
+                System.out.print("Результат проверки на входимость в промежуток: " + Metods.isInRange (a, b, num));
+            }
+            case 5 -> {
+                System.out.print("Введите число a: ");
+                String a_str = scanner.next();
+                int a = checks.CheckInt (a_str);
+                scanner.nextLine();
+
+                System.out.print("Введите число b: ");
+                String b_str = scanner.next();
+                int b = checks.CheckInt (b_str);
+                scanner.nextLine();
+
+                System.out.print("Введите число с: ");
+                String c_str = scanner.next();
+                int c = checks.CheckInt (c_str);
+                scanner.nextLine();
+
+                System.out.print("Результат проверки на равенство трёх чисел: " + Metods.isEqual(a, b, c));
+            }
+            case 6 -> {
+                int x;
+                System.out.print("Введите число x: ");
+                String x_str = scanner.next();
+                x = checks.CheckIntWithNegative(x_str);
+                scanner.nextLine();
+
+                System.out.print("Результат преобразования в положительное: " + Metods.abs(x));
+            }
+            case 7 -> {
+                int x;
+                System.out.print("Введите число x: ");
+                String x_str = scanner.next();
+                x = checks.CheckInt(x_str);
+                scanner.nextLine();
+
+                System.out.print("Результат деления на 3 или 5: " + Metods.is35(x));
+            }
+            case 8 -> {
+                int x;
+                System.out.print("Введите число x: ");
+                String x_str = scanner.next();
+                x = checks.CheckIntWithNegative(x_str);
+                scanner.nextLine();
+
+                int y;
+                System.out.print("Введите число y: ");
+                String y_str = scanner.next();
+                y = checks.CheckIntWithNegative(y_str);
+                scanner.nextLine();
+
+                int z;
+                System.out.print("Введите число z: ");
+                String z_str = scanner.next();
+                z = checks.CheckIntWithNegative(z_str);
+                scanner.nextLine();
+
+                System.out.print("Максимум из трех чисел: " + Metods.max3(x, y, z));
+            }
+            case 9 -> {
+                int x;
+                System.out.print("Введите число x: ");
+                String x_str = scanner.next();
+                x = checks.CheckIntWithNegative(x_str);
+                scanner.nextLine();
+
+                int y;
+                System.out.print("Введите число y: ");
+                String y_str = scanner.next();
+                y = checks.CheckIntWithNegative(y_str);
+                scanner.nextLine();
+
+                System.out.print("Сумма двух с условием: " + Metods.sum2(x, y));
+            }
+            case 10 -> {
+                int x;
+                System.out.print("Номер дня недели: ");
+                String x_str = scanner.next();
+                x = checks.CheckInt(x_str);
+                scanner.nextLine();
+
+                System.out.print("День недели: " + Metods.day(x));
+            }
+            case 11 -> {
+                int x;
+                System.out.print("Введите число x: ");
+                String x_str = scanner.next();
+                x = checks.CheckInt(x_str);
+                scanner.nextLine();
+
+                System.out.print("Строка чисел до x: " + Metods.listNums(x));
+            }
+            case 12 -> {
+                int x;
+                System.out.print("Введите число x: ");
+                String x_str = scanner.next();
+                x = checks.CheckInt(x_str);
+                scanner.nextLine();
+
+                System.out.print("Строка четных чисел до x: " + Metods.chet(x));
+            }
+            case 13 -> {
+                long x;
+                System.out.print("Введите число для подсчета цифр: ");
+                String x_str = scanner.next();
+                x = checks.CheckLong(x_str);
+                scanner.nextLine();
+
+                System.out.print("Кол-во цифр в числе: " + Metods.numLen(x));
+            }
+            case 14 -> {
+                int x;
+                System.out.print("Введите число x: ");
+                String x_str = scanner.next();
+                x = checks.CheckInt(x_str);
+                scanner.nextLine();
+
+                System.out.print("Квадрат размером x: \n");
+                Metods.square(x);
+            }
+            case 15 -> {
+                int x;
+                System.out.print("Введите число x: ");
+                String x_str = scanner.next();
+                x = checks.CheckInt(x_str);
+                scanner.nextLine();
+
+                System.out.print("Треугольник размером x: \n");
+                Metods.rightTriangle(x);
+            }
+            case 16 -> {
+                int x;
+                System.out.print("Введите число x: ");
+                String x_str = scanner.next();
+                x = checks.CheckInt(x_str);
+                scanner.nextLine();
+
+                int size;
+                System.out.print("Введите размерность массива: ");
+                String size_str = scanner.next();
+                size = checks.CheckInt(size_str);
+                scanner.nextLine();
+
+                int[] arr = new int[size];
+
+                System.out.print ("Введите элементы массива: \n");
+                for (int j = 0; j < size; j++) {
+                    System.out.print("Элемент " + (j + 1) + ": ");
+                    arr[j] = checks.CheckIntWithNegative(scanner.next());
+                }
+
+                System.out.print("Индекс вхождения x в массив: " + Metods.findFirst(arr, x));
+            }
+            case 17 -> {
+                int size;
+                System.out.print("Введите размерность массива: ");
+                String size_str = scanner.next();
+                size = checks.CheckInt(size_str);
+                scanner.nextLine();
+
+                int[] arr = new int[size];
+
+                System.out.print ("Введите элементы массива: \n");
+                for (int j = 0; j < size; j++) {
+                    System.out.print("Элемент " + (j + 1) + ": ");
+                    arr[j] = checks.CheckIntWithNegative(scanner.next());
+                }
+
+                System.out.print("Максимальное число в массиве: " + Metods.maxAbs(arr));
+            }
+            case 18 -> {
+                int size;
+                System.out.print("Введите размерность первого массива: ");
+                String size_str = scanner.next();
+                size = checks.CheckInt(size_str);
+                scanner.nextLine();
+
+                int[] arr = new int[size];
+
+                System.out.print ("Введите элементы первого массива: \n");
+                for (int j = 0; j < size; j++) {
+                    System.out.print("Элемент " + (j + 1) + ": ");
+                    arr[j] = checks.CheckIntWithNegative(scanner.next());
+                }
+
+                int size1;
+                System.out.print("Введите размерность второго массива: ");
+                String size1_str = scanner.next();
+                size1 = checks.CheckInt(size1_str);
+                scanner.nextLine();
+
+                int[] ins = new int[size1];
+
+                System.out.print ("Введите элементы второго массива: \n");
+                for (int j = 0; j < size1; j++) {
+                    System.out.print("Элемент " + (j + 1) + ": ");
+                    ins[j] = checks.CheckIntWithNegative(scanner.next());
+                }
+
+                int pos;
+                System.out.print("Введите индекс вставления второго массива: ");
+                String pos_str = scanner.next();
+                pos = checks.CheckInt(pos_str);
+                scanner.nextLine();
+
+                System.out.print("Массив после объединения: \n");
+                int[] result = Metods.add(arr, ins, pos);
+                for (int i = 0; i < result.length; i++) {
+                    System.out.print (result[i] + " ");
+                }
+            }
+            case 19 -> {
+                int size;
+                System.out.print("Введите размерность массива: ");
+                String size_str = scanner.next();
+                size = checks.CheckInt(size_str);
+                scanner.nextLine();
+
+                int[] arr = new int[size];
+
+                System.out.print ("Введите элементы массива: \n");
+                for (int j = 0; j < size; j++) {
+                    System.out.print("Элемент " + (j + 1) + ": ");
+                    arr[j] = checks.CheckIntWithNegative(scanner.next());
+                }
+
+                System.out.print("Инверсия массива: \n");
+                int[] res = Metods.reverseBack(arr);
+                for (int i = 0; i < size; i++) {
+                    System.out.print (res[i] + " ");
+                }
+            }
+            case 20 -> {
+                int x;
+                System.out.print("Введите число x: ");
+                String x_str = scanner.next();
+                x = checks.CheckInt(x_str);
+                scanner.nextLine();
+
+                int size;
+                System.out.print("Введите размерность массива: ");
+                String size_str = scanner.next();
+                size = checks.CheckInt(size_str);
+                scanner.nextLine();
+
+                int[] arr = new int[size];
+
+                System.out.print ("Введите элементы массива: \n");
+                for (int j = 0; j < size; j++) {
+                    System.out.print("Элемент " + (j + 1) + ": ");
+                    arr[j] = checks.CheckIntWithNegative(scanner.next());
+                }
+
+                System.out.print("Массив индексов вхождения x в arr: \n");
+                int[] res = Metods.findAll(arr, x);
+                for (int i = 0; i < res.length; i++) {
+                    System.out.print (res[i] + " ");
+                }
+            }
+        }
+    }
+}
